@@ -33,7 +33,7 @@ const map = {
 
     const { mapper } = options
 
-    if( value.items ) return value.items.map( item => mapper( item, options ) )
+    if( value.items ) return [ mapper( value.items, options ) ]
 
     return []
   },
@@ -44,10 +44,10 @@ const map = {
       const { mapper } = options
 
       return Object.keys( value.properties ).reduce( ( obj, key ) => {
-        obj[ key ] = mapper( value[ key ], options )
+        obj[ key ] = mapper( value.properties[ key ], options )
 
         return obj
-      })
+      }, {} )
     }
 
     return {}

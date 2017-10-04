@@ -1,6 +1,5 @@
 'use strict'
 
-const cloneMap = require( '../../src/clone-map' )
 const is = require( '@mojule/is' )
 
 const predicates = {
@@ -13,7 +12,7 @@ const predicates = {
     )
 }
 
-const map = Object.assign( {}, cloneMap, {
+const map = {
   nameValues: ( value, options ) => {
     const { mapper } = options
 
@@ -26,6 +25,6 @@ const map = Object.assign( {}, cloneMap, {
       return obj
     }, {})
   }
-})
+}
 
 module.exports = { predicates, map }

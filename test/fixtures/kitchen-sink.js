@@ -11,7 +11,12 @@ const KitchenSink = () => {
     array: [ 1, 2, 3 ],
     emptyArray: [],
     object: { foo: 'bar', baz: 'qux' },
-    emptyObject: {}
+    emptyObject: {},
+    objectArray: [
+      { foo: 1, bar: 2, baz: 3, qux: 4 },
+      { foo: 5, bar: 6, baz: 7 },
+      { foo: 5, bar: 'foo' }
+    ]
   }
 
   return kitchenSink

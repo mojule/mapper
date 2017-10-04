@@ -3,15 +3,18 @@
 const Is = require( '@mojule/is' )
 const defaultOptions = require( './src/default-options' )
 
+const { map: defaultMap } = defaultOptions
+
 const Mapper = options => {
   options = Object.assign( {}, defaultOptions, options )
 
-  const { map, predicates } = options
-
-  if( !map )
-    throw TypeError( 'options missing required map' )
-
+  const { predicates } = options
   const is = Is( predicates )
+
+  let { map } = options
+
+  if( map !== defaultMap )
+    map = Object.assign( {}, defaultMap, map )
 
   const mapper = ( value, mapOptions ) => {
     mapOptions = Object.assign( {}, options, { is, mapper }, mapOptions )
@@ -20,7 +23,7 @@ const Mapper = options => {
     const fn = map[ type ]
 
     if( is.function( fn ) )
-      return map[ type ]( value, mapOptions )
+      return fn( value, mapOptions )
 
     return value
   }

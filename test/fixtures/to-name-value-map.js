@@ -1,8 +1,6 @@
 'use strict'
 
-const cloneMap = require( '../../src/clone-map' )
-
-const toNameValueMap = Object.assign( {}, cloneMap, {
+const toNameValueMap = {
   object: ( value, options ) => {
     const { mapper } = options
     const keys = Object.keys( value )
@@ -19,6 +17,6 @@ const toNameValueMap = Object.assign( {}, cloneMap, {
       value: mapper( value[ key ], options )
     }))
   }
-})
+}
 
 module.exports = toNameValueMap
