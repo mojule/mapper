@@ -9,7 +9,7 @@ const Mapper = options => {
   const { map, predicates } = options
 
   if( !map )
-    throw TypeError( 'options missing required maps property' )
+    throw TypeError( 'options missing required map' )
 
   const is = Is( predicates )
 
@@ -17,13 +17,15 @@ const Mapper = options => {
     mapOptions = Object.assign( {}, options, { is, mapper }, mapOptions )
 
     const type = is.of( value )
-    const result = map[ type ]( value, mapOptions )
+    const fn = map[ type ]
 
-    return result
+    if( is.function( fn ) )
+      return map[ type ]( value, mapOptions )
+
+    return value
   }
 
   return mapper
 }
-
 
 module.exports = Mapper

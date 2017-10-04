@@ -1,0 +1,60 @@
+[
+  {
+    "name": "string",
+    "value": "foo"
+  },
+  {
+    "name": "emptyString",
+    "value": ""
+  },
+  {
+    "name": "number",
+    "value": -1.5
+  },
+  {
+    "name": "true",
+    "value": true
+  },
+  {
+    "name": "false",
+    "value": false
+  },
+  {
+    "name": "null",
+    "value": null
+  },
+  {
+    "name": "array",
+    "value": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "name": "emptyArray",
+    "value": []
+  },
+  {
+    "name": "object",
+    "value": [
+      {
+        "name": "foo",
+        "value": "bar"
+      },
+      {
+        "name": "baz",
+        "value": "qux"
+      }
+    ]
+  },
+  {
+    "name": "emptyObject",
+    "value": [
+      {
+        "name": null,
+        "value": null
+      }
+    ]
+  }
+]
