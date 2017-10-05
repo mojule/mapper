@@ -1,16 +1,25 @@
 # mapper
 
-A simple framework for mapping things from one value to another.
-
-With no options passed, it defaults to returning a function that expects JSON
-compatible values and clones them.
-
-The real value of it comes when you pass custom predicates and mappings.
+A simple module for mapping things from one value to another.
 
 `npm install @mojule/mapper`
 
-Example: Clone the value, and while cloning it convert any instances of a
-legacy person object to a new person object
+With no options passed, it defaults to returning a function that expects JSON
+compatible values and clones them:
+
+```javascript
+const Mapper = require( '@mojule/mapper' )
+
+const mapper = Mapper()
+
+const data = { foo: 'bar' }
+const clone = mapper( data )
+```
+
+The real value of it comes when you pass custom predicates and mappings.
+
+Clone the value, and while cloning it convert any instances of a legacy person
+object to a new person object:
 
 ```javascript
 const Mapper = require( '@mojule/mapper' )
