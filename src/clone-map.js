@@ -1,6 +1,10 @@
 'use strict'
 
 const cloneMap = {
+  string: value => value,
+  number: value => value,
+  boolean: value => value,
+  null: value => value,
   array: ( value, options ) => {
     const { mapper } = options
 

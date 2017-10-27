@@ -9,6 +9,7 @@ const toSchemaMap = require( './fixtures/to-schema' )
 const fromSchema = require( './fixtures/from-schema' )
 const extendJson = require( './fixtures/extend-json' )
 const KitchenSink = require( './fixtures/kitchen-sink' )
+const TreeMapper = require( './fixtures/tree-mapper' )
 
 describe( 'mapper', () => {
   describe( 'default (clone)', () => {
@@ -112,3 +113,10 @@ describe( 'mapper', () => {
     })
   })
 })
+
+console.log( 'testing' )
+const treeMapper = TreeMapper()
+const instance = KitchenSink()
+const result = treeMapper( instance )
+
+console.log( JSON.stringify( TreeMapper.root, null, 2 ) )
