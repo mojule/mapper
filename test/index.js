@@ -23,6 +23,16 @@ describe( 'mapper', () => {
       assert.notEqual( cloned, instance )
       assert.deepEqual( cloned, expect )
     })
+
+    it( 'still returns value when no mapper in map', () => {
+      const cloneMap = require( '../src/clone-map' )
+      const noStringMap = Object.assign( {}, cloneMap, { string: undefined } )
+      const NoStringMapper = Mapper({ map: noStringMap })
+      const str = 'foo'
+      const value = NoStringMapper( str )
+
+      assert.strictEqual( str, value )
+    })
   })
 
   describe( 'extended JSON mapper', () => {

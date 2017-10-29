@@ -1,24 +1,14 @@
 'use strict'
 
-const Is = require( '@mojule/is' )
-const defaultOptions = require( './src/default-options' )
-
-const { map: defaultMap } = defaultOptions
+const extendOptions = require( './src/extend-options' )
 
 const Mapper = options => {
-  options = Object.assign( {}, defaultOptions, options )
-
-  const { predicates } = options
-  const is = Is( predicates )
-
-  let { map } = options
-
-  if( map !== defaultMap )
-    map = Object.assign( {}, defaultMap, map )
+  options = extendOptions( options )
 
   const mapper = ( value, mapOptions ) => {
-    mapOptions = Object.assign( {}, options, { is, mapper }, mapOptions )
+    mapOptions = Object.assign( {}, options, { mapper }, mapOptions  )
 
+    const { map, is } = mapOptions
     const type = is.of( value )
     const fn = map[ type ]
 
