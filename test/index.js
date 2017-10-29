@@ -9,7 +9,6 @@ const toSchemaMap = require( './fixtures/to-schema' )
 const fromSchema = require( './fixtures/from-schema' )
 const extendJson = require( './fixtures/extend-json' )
 const KitchenSink = require( './fixtures/kitchen-sink' )
-const TreeMapper = require( './fixtures/tree-mapper' )
 
 describe( 'mapper', () => {
   describe( 'default (clone)', () => {
@@ -23,6 +22,16 @@ describe( 'mapper', () => {
       assert.notEqual( cloned, expect )
       assert.notEqual( cloned, instance )
       assert.deepEqual( cloned, expect )
+    })
+
+    it( 'still returns value when no mapper in map', () => {
+      const cloneMap = require( '../src/clone-map' )
+      const noStringMap = Object.assign( {}, cloneMap, { string: undefined } )
+      const NoStringMapper = Mapper({ map: noStringMap })
+      const str = 'foo'
+      const value = NoStringMapper( str )
+
+      assert.strictEqual( str, value )
     })
   })
 
@@ -113,10 +122,3 @@ describe( 'mapper', () => {
     })
   })
 })
-
-console.log( 'testing' )
-const treeMapper = TreeMapper()
-const instance = KitchenSink()
-const result = treeMapper( instance )
-
-console.log( JSON.stringify( TreeMapper.root, null, 2 ) )
